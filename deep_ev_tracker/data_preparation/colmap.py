@@ -22,6 +22,8 @@ from pathlib import Path
 import fire
 import numpy as np
 from scipy.spatial.transform import Rotation
+import sys
+sys.path.append('/home/aircraft-lab/Documents/Deep_Learning_Project/deep_ev_tracker/')
 
 from utils.dataset import ECPoseSegmentDataset, EDSPoseSegmentDataset
 

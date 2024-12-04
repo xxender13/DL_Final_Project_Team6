@@ -747,7 +747,7 @@ class Multiflow(SequenceDataset):
 class EDSSubseq(SequenceDataset):
     # ToDo: Add to config file
     pose_r = 3
-    pose_mode = False
+    pose_mode = True
 
     def __init__(
         self,
@@ -761,7 +761,7 @@ class EDSSubseq(SequenceDataset):
         include_prev=False,
         fused=False,
         grayscale_ref=True,
-        use_colmap_poses=True,
+        use_colmap_poses=False,
         global_mode=False,
         **kwargs,
     ):
@@ -806,6 +806,7 @@ class EDSSubseq(SequenceDataset):
                 / f"{self.representation}"
             )
         if not self.dir_representation.exists():
+            print(self.dir_representation)
             print(
                 f"{self.representation} has not yet been generated for a dt of {self.dt}"
             )
@@ -1120,7 +1121,7 @@ class EDSSubseq(SequenceDataset):
 
 class ECSubseq(SequenceDataset):
     # ToDO: Add to config file
-    pose_r = 4
+    pose_r = 3
     pose_mode = False
 
     def __init__(
@@ -1144,7 +1145,7 @@ class ECSubseq(SequenceDataset):
         self.dt, self.dt_us = dt, dt * 1e6
         self.sequence_dir = self.root_dir / self.sequence_name
         self.corner_config = corner_config
-
+        print("dt",self.dt)
         # Determine number of frames
         self.frame_dir = self.sequence_dir / "images_corrected"
         max_frames = len(list(self.frame_dir.iterdir()))
@@ -1172,6 +1173,7 @@ class ECSubseq(SequenceDataset):
             )
 
         if not self.dir_representation.exists():
+            print(self.dir_representation)
             print(
                 f"{self.representation} has not yet been generated for a dt of {self.dt}"
             )

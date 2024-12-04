@@ -32,7 +32,7 @@ def train(cfg):
     )
     if cfg.checkpoint_path.lower() != "none":
         # Load weights
-        model = model.load_from_checkpoint(checkpoint_path=cfg.checkpoint_ )
+        model = model.load_from_checkpoint(checkpoint_path=cfg.checkpoint_path)
 
         # Override stuff for fine-tuning
         model.hparams.optimizer.lr = cfg.model.optimizer.lr

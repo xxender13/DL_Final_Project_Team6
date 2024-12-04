@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import yaml
 from tqdm import tqdm
+import sys
+sys.path.append('/home/aircraft-lab/Documents/Deep_Learning_Project/deep_ev_tracker/')
 
 from utils.utils import blosc_opts
 
@@ -52,7 +54,7 @@ class CameraSystem:
 
         if not fix_rotation:
             # camera chain parameters
-            self.newK = self.event_cam.K
+            self.newK = self.cam1.K
 
             # tmp = cv2.stereoRectify(self.cam.K, self.cam.distortion_coeffs,
             #                   self.event_cam.K, self.event_cam.distortion_coeffs,
@@ -67,8 +69,8 @@ class CameraSystem:
             self.newR = np.stack([r1, r2, r3], -1)
             print("distance: %s" % (np.linalg.norm(self.t) * self.newK[0, 0]))
         else:
-            self.newR = self.cam.R
-            self.newK = self.event_cam.K
+            self.newR = self.cam0.R
+            self.newK = self.cam1.K
 
 
 def vizloop(kwargs, callbacks, image_fun):
@@ -98,6 +100,8 @@ def vizloop(kwargs, callbacks, image_fun):
 
 def _remap_events(events, map, rotate, shape):
     mx, my = map
+    print(mx, my)
+    print(events["y"])
     x, y = mx[events["y"], events["x"]], my[events["y"], events["x"]]
     p = np.array(events["p"])
     t = np.array(events["t"])
@@ -189,6 +193,7 @@ def getRemapping(camsys: CameraSystem):
         camsys.newK,
     )
     inv_maps = points.reshape((H, W, 2))
+    print("evx: ",inv_maps[:,:,0])
 
     return {
         "img_mapx": img_mapx,
@@ -217,6 +222,8 @@ if __name__ == "__main__":
     map_key = args.map_key
 
     # search for image folder
+    print(args.data_dir)
+    print(args.sequence_name)
     image_dir = os.path.join(args.data_dir, args.sequence_name, "images")
     image_paths = sorted(glob.glob(join(image_dir, "*.png")))
     output_image_dir = image_dir + "_corrected"

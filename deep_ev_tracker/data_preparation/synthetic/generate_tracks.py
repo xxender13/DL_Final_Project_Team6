@@ -33,16 +33,16 @@ displacements_all = []
 
 def generate_single_track(seq_dir, dt=0.01):
     tracks = []
-    dt_us = dt * 1e6
+    dt_us = dt * 1e2
 
     # Get split
     split = seq_dir.parents[0].stem
 
     # Load reference image
-    img_t0_p = seq_dir / "images" / "0400000.png"
+    img_t0_p = seq_dir / "images" / "frame_0000000000.png"
     if img_t0_p.exists():
         img_t0 = cv2.imread(
-            str(seq_dir / "images" / "0400000.png"), cv2.IMREAD_GRAYSCALE
+            str(seq_dir / "images" / "frame_0000000000.png"), cv2.IMREAD_GRAYSCALE
         )
     else:
         print(f"Sequence {seq_dir} has no reference image.")
@@ -65,8 +65,8 @@ def generate_single_track(seq_dir, dt=0.01):
         tracks.append(track.reshape((1, 3)))
 
     # Read flow
-    for ts_us in np.arange(400000 + dt_us, 900000 + dt_us, dt_us):
-        flow_path = seq_dir / "flow" / f"0{ts_us:.0f}.h5"
+    for ts_us in np.arange(0 + dt_us, 1029 + dt_us, dt_us):
+        flow_path = seq_dir / "flow" / f"flow_{ts_us:.0f}.h5"
         with h5py.File(str(flow_path), "r") as h5f:
             flow = np.asarray(h5f["flow"])
 
@@ -77,7 +77,8 @@ def generate_single_track(seq_dir, dt=0.01):
                 new_track_entry[2] += flow[int(y_init), int(x_init), 1]
                 new_track_entry = new_track_entry.reshape((1, 3))
                 tracks[i_corner] = np.append(tracks[i_corner], new_track_entry, axis=0)
-
+    print("1***********************************************************************************************")
+    print("tracks1",len(track))
     # Filter tracks by minimum motion and OOB
     filtered_tracks = []
     for i_corner in range(len(tracks)):
@@ -97,11 +98,11 @@ def generate_single_track(seq_dir, dt=0.01):
             continue
 
         filtered_tracks.append(tracks[i_corner])
-
+    print("filtered_tracks",len(filtered_tracks))
     if len(filtered_tracks) == 0:
         return
     print(f"Remaining tracks after filtering: {len(filtered_tracks)}")
-
+    print("2***********************************************************************************************")
     for track_idx in range(len(filtered_tracks)):
         track = filtered_tracks[track_idx]
         track_idx_column = track_idx * np.ones((track.shape[0], 1), dtype=track.dtype)
@@ -114,12 +115,14 @@ def generate_single_track(seq_dir, dt=0.01):
 
     # Write tracks to disk
     tracks_dir = OUTPUT_DIR / split / seq_dir.stem / "tracks"
+    print("tracks", tracks_dir)
     if not tracks_dir.exists():
         #tracks_dir.mkdir()
         os.makedirs(tracks_dir)
     output_path = tracks_dir / f"{TRACK_NAME}.gt.txt"
+    print("out",output_path)
     np.savetxt(output_path, filtered_tracks)
-
+    print("3***********************************************************************************************")
 
 def generate_tracks(dataset_dir, output_dir):
     """

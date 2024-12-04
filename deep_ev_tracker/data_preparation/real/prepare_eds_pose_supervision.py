@@ -13,6 +13,8 @@ import h5py
 import hdf5plugin
 import numpy as np
 from tqdm import tqdm
+import sys
+sys.path.append('/home/aircraft-lab/Documents/Deep_Learning_Project/deep_ev_tracker/')
 
 from utils.utils import blosc_opts
 
