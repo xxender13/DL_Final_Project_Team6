@@ -34,15 +34,24 @@ corner_config = CornerConfig(30, 0.3, 15, 0.15, False, 11)
 
 EvalDatasetConfigDict = {
     EvalDatasetType.EC: {"dt": 0.010, "root_dir": "<path>"},
-    EvalDatasetType.EDS: {"dt":0.0025, "root_dir": "/home/aircraft-lab/Documents/eds_subseq"},
+    EvalDatasetType.EDS: {"dt":0.25, "root_dir": "/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/DL_Dataset_Fall_2024/Augmented_DS/"},
 }
 
 EVAL_DATASETS = [
     #("00_peanuts_dark_0_100", EvalDatasetType.EDS),
-    ("peanuts_light_160_386", EvalDatasetType.EDS),
-    ("rocket_earth_light_338_438", EvalDatasetType.EDS),
-    ("ziggy_in_the_arena_1350_1650", EvalDatasetType.EDS),
-    ("peanuts_running_2360_2460", EvalDatasetType.EDS),
+    # ("/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/DL_Dataset_Fall_2024/Town01/dvs/aligned_timestamps_data_dl_town01_day_4_99", EvalDatasetType.EDS),
+    # ("/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/DL_Dataset_Fall_2024/Town01/dvs/aligned_timestamps_data_dl_town01_night_3_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_defocus_blur_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_fog_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_frost_2_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_original_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_glass_blur_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_gaussian_blur_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_impulse_noise_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_motion_blur_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_shot_noise_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_speckle_noise_2_99", EvalDatasetType.EDS),
+    # ("peanuts_running_2360_2460", EvalDatasetType.EDS),
     # ("shapes_translation_8_88", EvalDatasetType.EC),
     # ("shapes_rotation_165_245", EvalDatasetType.EC),
     # ("shapes_6dof_485_565", EvalDatasetType.EC),
@@ -144,7 +153,8 @@ def track(cfg):
         )
 
         # Load ground truth corners for this seq and override initialization
-        gt_features_path = str(Path(cfg.gt_path) / f"{seq_name}.gt.txt")
+        # gt_features_path = str(Path(cfg.gt_path) / f"{seq_name}.gt.txt")
+        gt_features_path = "/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/DL_Dataset_Fall_2024/GT_Tracks/rgb_aligned_town01_night.txt"
         gt_start_corners = get_gt_corners(gt_features_path)
 
         dataset.override_keypoints(gt_start_corners)

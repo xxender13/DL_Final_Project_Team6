@@ -2,7 +2,7 @@ hydra:
   run:
     dir: evaluations/${model.name}/${now:%Y-%m-%d_%H%M%S}
 
-gt_path: /home/aircraft-lab/Documents/gt_tracks
+gt_path: /home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/DL_Dataset_Fall_2024/GT_Tracks
 running_locally: False
 
 
@@ -11,8 +11,8 @@ weights_path: /home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Projec
 track_name: shitomasi_custom_v5
 representation: time_surfaces_v2_5
 patch_size: 31
-visualize: False
-dt_track_vis: 0.2
+visualize: True
+dt_track_vis: 0.25
 
 # Composing nested config with default
 defaults:

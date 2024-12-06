@@ -1,0 +1,33 @@
+[2024-12-06 15:39:38,315][__main__][INFO] - 
+model:
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 1.0e-06
+  name: correlation3_unscaled
+  _target_: models.correlation3_unscaled.TrackerNetC
+  patch_size: 31
+  feature_dim: 384
+  representation: time_surfaces_v2_5
+gt_path: /home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/DL_Dataset_Fall_2024/GT_Tracks
+running_locally: false
+weights_path: /home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/pretrained_weights/weights_finetuned_ec.ckpt
+track_name: shitomasi_custom_v5
+representation: time_surfaces_v2_5
+patch_size: 31
+visualize: true
+dt_track_vis: 0.25
+trainer:
+  gpus:
+  - 0
+
+[2024-12-06 15:40:18,667][__main__][INFO] - === DATASET: rgb_aligned_town01_night_defocus_blur_2_99 ===
+[2024-12-06 15:40:18,667][__main__][INFO] - Latency: 3.7242579460144043 s
+[2024-12-06 15:40:52,488][__main__][INFO] - === DATASET: rgb_aligned_town01_night_original_2_99 ===
+[2024-12-06 15:40:52,488][__main__][INFO] - Latency: 3.599489688873291 s
+[2024-12-06 15:40:52,489][__main__][INFO] - 
++--------------------+
+|   Inference Time   |
++--------------------+
+| 3.7242579460144043 |
+| 3.599489688873291  |
++--------------------+

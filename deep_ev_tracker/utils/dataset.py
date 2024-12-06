@@ -747,7 +747,7 @@ class Multiflow(SequenceDataset):
 class EDSSubseq(SequenceDataset):
     # ToDo: Add to config file
     pose_r = 3
-    pose_mode = True
+    pose_mode = False
 
     def __init__(
         self,

@@ -5,14 +5,16 @@ from glob import glob
 import cv2
 import h5py
 import hdf5plugin
+import matplotlib
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
-sequence_name = "all_characters"
-corrected_image_dir = f"<path>/{sequence_name}/images_corrected"
-image_ts_path = f"<path>/{sequence_name}/images_timestamps.txt"
+sequence_name = "00_peanuts_dark"
+corrected_image_dir = f"/home/aircraft-lab/Documents/Deep_Learning_Project/eds_subseq/{sequence_name}/images_corrected"
+image_ts_path = f"/home/aircraft-lab/Documents/Deep_Learning_Project/eds_subseq/{sequence_name}/images_timestamps.txt"
 corrected_events_path = (
-    f"<path>/{sequence_name}/events_corrected.h5"
+    f"/home/aircraft-lab/Documents/Deep_Learning_Project/eds_subseq/{sequence_name}/events_corrected.h5"
 )
 dt_event_slice = 500
 
@@ -45,6 +47,7 @@ with h5py.File(corrected_events_path, "r") as h5f:
         off_mask = p == 0
 
         # Draw events
+        print('here')
         plt.scatter(x[on_mask], y[on_mask], s=1, c="green")
         plt.scatter(x[off_mask], y[off_mask], s=1, c="red")
         plt.title(f"Image Time: {t1*1e-6}")

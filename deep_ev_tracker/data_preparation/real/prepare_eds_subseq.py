@@ -38,9 +38,9 @@ def generate_subseq(seq_name, start_idx, end_idx, dt):
     """
 
     # Pathing
-    input_dir = Path(f"/home/aircraft-lab/Documents/Deep_Learning_Project/eds_subseq/{seq_name}")
+    input_dir = Path(f"/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/{seq_name}")
     output_dir = Path(
-        f"/home/aircraft-lab/Documents/Deep_Learning_Project/eds_subseq/{seq_name}_{start_idx}_{end_idx}"
+        f"/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/{seq_name}_{start_idx}_{end_idx}"
     )
     if not output_dir.exists():
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -123,19 +123,22 @@ def generate_subseq(seq_name, start_idx, end_idx, dt):
                             out["y"][i], out["x"][i], 2 * i_bin + int(out["p"][i])
                         ] = (out["t"][i] - t0)
                 time_surface = np.divide(time_surface, dt_us)
+                # print(output_ts_path)
+                # print(time_surface.shape)
+                # print(time_surface.dtype)
                 with h5py.File(output_ts_path, "w") as h5f_out:
                     h5f_out.create_dataset(
                         "time_surface",
                         data=time_surface,
                         shape=time_surface.shape,
                         dtype=np.float32,
-                        **blosc_opts(complevel=1, shuffle="byte"),
+                        # **blosc_opts(complevel=1, shuffle="byte"),
                     )
 
                 # Visualize
-                for i in range(n_bins):
-                    plt.imshow((time_surface[:, :, i] * 255).astype(np.uint8))
-                    plt.show()
+                # for i in range(n_bins):
+                #     plt.imshow((time_surface[:, :, i] * 255).astype(np.uint8))
+                #     plt.show()
 
             # Storing events in one cropped file
             first_t, last_t = image_timestamps[0], image_timestamps[-1]
