@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from prettytable import PrettyTable
 from tqdm import tqdm
+import os
 import sys
 sys.path.append('/home/aircraft-lab/Documents/Deep_Learning_Project/deep_ev_tracker/')
 
@@ -19,23 +20,24 @@ from utils.track_utils import compute_tracking_errors, read_txt_results
 plt.rcParams["font.family"] = "serif"
 
 EVAL_DATASETS = [
-    ("peanuts_light_160_386", EvalDatasetType.EDS),
-    ("rocket_earth_light_338_438", EvalDatasetType.EDS),
-    ("ziggy_in_the_arena_1350_1650", EvalDatasetType.EDS),
-    ("peanuts_running_2360_2460", EvalDatasetType.EDS),
-    # ("shapes_translation_8_88", EvalDatasetType.EC),
-    # ("shapes_rotation_165_245", EvalDatasetType.EC),
-    # ("shapes_6dof_485_565", EvalDatasetType.EC),
-    # ("boxes_translation_330_410", EvalDatasetType.EC),
-    # ("boxes_rotation_198_278", EvalDatasetType.EC),
+    ("rgb_defocus_blur_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_fog_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_frost_2_99", EvalDatasetType.EDS),
+    ("rgb_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_glass_blur_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_gaussian_blur_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_impulse_noise_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_motion_blur_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_shot_noise_2_99", EvalDatasetType.EDS),
+    # ("rgb_aligned_town01_night_speckle_noise_2_99", EvalDatasetType.EDS),
 ]
 
 error_threshold_range = np.arange(1, 32, 1)
 results_dir = Path(
-    "/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/evaluations/correlation3_unscaled/2024-12-03_174041"
+    "/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/evaluations/correlation3_unscaled/2024-12-06_153938"
 )
 out_dir = Path(
-    "/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/evaluations/correlation3_unscaled/2024-12-03_174041/benchmark_results"
+    "/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/evaluations/correlation3_unscaled/2024-12-06_153938/benchmark_results"
 )
 methods = ["network_pred"]
 
@@ -59,7 +61,7 @@ for k in table_keys:
 for eval_sequence in EVAL_DATASETS:
     sequence_name = eval_sequence[0]
     track_data_gt = read_txt_results(
-        str(results_dir / "gt" / f"{sequence_name}.gt.txt")
+        str(results_dir / f"{sequence_name}.gt.txt")
     )
 
     rows = {}

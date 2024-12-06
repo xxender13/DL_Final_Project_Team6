@@ -1,0 +1,36 @@
+age_5_mu
+Sequence Name,network_pred
+rgb_defocus_blur_2_99,0.05211672293488481
+rgb_2_99,0.052935053540449466
+age_5_std
+Sequence Name,network_pred
+rgb_defocus_blur_2_99,0.04439615322897129
+rgb_2_99,0.042771643494176954
+te_5_mu
+Sequence Name,network_pred
+rgb_defocus_blur_2_99,3.081739318290251
+rgb_2_99,3.1501278851755328
+te_5_std
+Sequence Name,network_pred
+rgb_defocus_blur_2_99,0.8221133321753481
+rgb_2_99,0.8896265918009193
+age_mu
+Sequence Name,network_pred
+rgb_defocus_blur_2_99,0.14979289875690882
+rgb_2_99,0.15231218862628257
+age_std
+Sequence Name,network_pred
+rgb_defocus_blur_2_99,0.07826265022096368
+rgb_2_99,0.08062342264112651
+inliers_mu
+Sequence Name,network_pred
+rgb_defocus_blur_2_99,0.9290322580645162
+rgb_2_99,0.9290322580645162
+inliers_std
+Sequence Name,network_pred
+rgb_defocus_blur_2_99,0.19002771642472704
+rgb_2_99,0.19002771642472704
+expected_age
+Sequence Name,network_pred
+rgb_defocus_blur_2_99,0.14603217233317625
+rgb_2_99,0.14856243859133983
