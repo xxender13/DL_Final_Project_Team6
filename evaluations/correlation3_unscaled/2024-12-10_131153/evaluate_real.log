@@ -1,0 +1,57 @@
+[2024-12-10 13:11:53,629][__main__][INFO] - 
+model:
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 1.0e-06
+  name: correlation3_unscaled
+  _target_: models.correlation3_unscaled.TrackerNetC
+  patch_size: 31
+  feature_dim: 384
+  representation: time_surfaces_v2_5
+gt_path: /media/aircraft-lab/abb843bc-72d2-41f9-a1dd-ed0eedb446d8/DL_Dataset_Fall_2024/GT_Tracks
+running_locally: false
+weights_path: /home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/pretrained_weights/weights_finetuned_ec.ckpt
+track_name: shitomasi_custom_v5
+representation: time_surfaces_v2_5
+patch_size: 31
+visualize: true
+dt_track_vis: 0.25
+trainer:
+  gpus:
+  - 0
+
+[2024-12-10 13:12:26,539][__main__][INFO] - === DATASET: rgb_aligned_town01_night_defocus_blur_2_99 ===
+[2024-12-10 13:12:26,539][__main__][INFO] - Latency: 3.6607513427734375 s
+[2024-12-10 13:12:56,328][__main__][INFO] - === DATASET: rgb_aligned_town01_night_fog_2_99 ===
+[2024-12-10 13:12:56,328][__main__][INFO] - Latency: 3.489807605743408 s
+[2024-12-10 13:13:26,715][__main__][INFO] - === DATASET: rgb_aligned_town01_night_frost_2_99 ===
+[2024-12-10 13:13:26,715][__main__][INFO] - Latency: 3.517001152038574 s
+[2024-12-10 13:13:54,936][__main__][INFO] - === DATASET: rgb_aligned_town01_night_original_2_99 ===
+[2024-12-10 13:13:54,937][__main__][INFO] - Latency: 3.5211451053619385 s
+[2024-12-10 13:14:26,840][__main__][INFO] - === DATASET: rgb_aligned_town01_night_glass_blur_2_99 ===
+[2024-12-10 13:14:26,840][__main__][INFO] - Latency: 3.542483329772949 s
+[2024-12-10 13:14:59,812][__main__][INFO] - === DATASET: rgb_aligned_town01_night_guassian_blur_2_99 ===
+[2024-12-10 13:14:59,812][__main__][INFO] - Latency: 3.483297109603882 s
+[2024-12-10 13:15:33,306][__main__][INFO] - === DATASET: rgb_aligned_town01_night_impulse_noise_2_99 ===
+[2024-12-10 13:15:33,307][__main__][INFO] - Latency: 3.5136735439300537 s
+[2024-12-10 13:16:05,358][__main__][INFO] - === DATASET: rgb_aligned_town01_night_motion_blur_2_99 ===
+[2024-12-10 13:16:05,358][__main__][INFO] - Latency: 3.3429818153381348 s
+[2024-12-10 13:16:33,444][__main__][INFO] - === DATASET: rgb_aligned_town01_night_shot_noise_2_99 ===
+[2024-12-10 13:16:33,444][__main__][INFO] - Latency: 3.398789405822754 s
+[2024-12-10 13:17:05,729][__main__][INFO] - === DATASET: rgb_aligned_town01_night_speckle_noise_2_99 ===
+[2024-12-10 13:17:05,729][__main__][INFO] - Latency: 3.3320043087005615 s
+[2024-12-10 13:17:05,730][__main__][INFO] - 
++--------------------+
+|   Inference Time   |
++--------------------+
+| 3.6607513427734375 |
+| 3.489807605743408  |
+| 3.517001152038574  |
+| 3.5211451053619385 |
+| 3.542483329772949  |
+| 3.483297109603882  |
+| 3.5136735439300537 |
+| 3.3429818153381348 |
+| 3.398789405822754  |
+| 3.3320043087005615 |
++--------------------+

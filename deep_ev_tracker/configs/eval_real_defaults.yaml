@@ -2,7 +2,7 @@ hydra:
   run:
     dir: evaluations/${model.name}/${now:%Y-%m-%d_%H%M%S}
 
-gt_path: /home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/DL_Dataset_Fall_2024/GT_Tracks
+gt_path: /media/aircraft-lab/abb843bc-72d2-41f9-a1dd-ed0eedb446d8/DL_Dataset_Fall_2024/GT_Tracks
 running_locally: False
 
 

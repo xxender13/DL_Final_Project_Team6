@@ -20,10 +20,20 @@ from utils.track_utils import compute_tracking_errors, read_txt_results
 plt.rcParams["font.family"] = "serif"
 
 EVAL_DATASETS = [
-    ("rgb_defocus_blur_2_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_defocus_blur_2_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_fog_2_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_frost_2_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_original_2_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_glass_blur_2_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_guassian_blur_2_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_impulse_noise_2_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_motion_blur_2_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_shot_noise_2_99", EvalDatasetType.EDS),
+    ("rgb_aligned_town01_night_speckle_noise_2_99", EvalDatasetType.EDS),
+    # ("rgb_defocus_blur_2_99", EvalDatasetType.EDS),
     # ("rgb_aligned_town01_night_fog_2_99", EvalDatasetType.EDS),
     # ("rgb_aligned_town01_night_frost_2_99", EvalDatasetType.EDS),
-    ("rgb_2_99", EvalDatasetType.EDS),
+    # ("rgb_2_99", EvalDatasetType.EDS),
     # ("rgb_aligned_town01_night_glass_blur_2_99", EvalDatasetType.EDS),
     # ("rgb_aligned_town01_night_gaussian_blur_2_99", EvalDatasetType.EDS),
     # ("rgb_aligned_town01_night_impulse_noise_2_99", EvalDatasetType.EDS),
@@ -34,10 +44,10 @@ EVAL_DATASETS = [
 
 error_threshold_range = np.arange(1, 32, 1)
 results_dir = Path(
-    "/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/evaluations/correlation3_unscaled/2024-12-06_153938"
+    "/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/evaluations/correlation3_unscaled/2024-12-10_131153"
 )
 out_dir = Path(
-    "/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/evaluations/correlation3_unscaled/2024-12-06_153938/benchmark_results"
+    "/home/aircraft-lab/Documents/Deep_Learning_Project/DL_Final_Project_Team6/DL_Final_Project_Team6/evaluations/correlation3_unscaled/2024-12-10_131153/benchmark_results"
 )
 methods = ["network_pred"]
 
